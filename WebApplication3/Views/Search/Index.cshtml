@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Search";
+}
+@using WebApplication3
+<p style="text-align: center">
+    LOGIC OF GENERATING ID : <br/>
+    First 3 letters of name + first and last letters of speciality + addition of digits of date of birth + 3 last digits of group: <br/> 
+    For example, ZhiCE5628702<br/>
+</p>
+<form method="post" style="margin-left: 600px">
+    <input type="text" name="id"/><br />
+    <input type="submit" value="search" style="margin-left: 55px"/>
+</form>
+<br/>
+<table class="table" style="margin-left: 500px">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Group</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var std in Database.shared.students)
+    {
+        <tr>
+            <td>@std.Name</td>
+            <td>@std.Birthdate</td>
+            <td>@std.Group</td>
+        </tr>
+    }
+    </tbody>
+</table>
